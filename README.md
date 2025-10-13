@@ -1,6 +1,4 @@
-# udemy-htmx-practical-guide
-
-HTMX - The Practical Guide
+# HTMX - The Practical Guide
 
 https://www.udemy.com/course/htmx-the-practical-guide/
 
@@ -40,3 +38,11 @@ And much, much more!
 And you'll learn all that by working on multiple demo projects which allow you to dive deeper and deeper into HTMX.
 
 Therefore, by the end of the course, you'll be able to add HTMX to your next web projects and reap its benefits!
+
+### Instructions
+
+### Resources
+
+### Misc
+
+### Certificate
