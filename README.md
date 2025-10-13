@@ -42,6 +42,7 @@ Therefore, by the end of the course, you'll be able to add HTMX to your next web
 ### Instructions
 
 ### Resources
+https://github.com/academind/htmx-course-resources
 
 ### Misc
 
