@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
         />
         <link rel="icon" href="/icon.png" />
         <link rel="stylesheet" href="/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js" integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ" crossorigin="anonymous"></script>
       </head>
       <body>
         <header id="main-header">
