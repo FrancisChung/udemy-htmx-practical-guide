@@ -9,7 +9,7 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.send(`
     <!DOCTYPE html>
-    <html>
+    <html lang="en-au">
       <head>
         <title>HTMX Essentials</title>
         <link
