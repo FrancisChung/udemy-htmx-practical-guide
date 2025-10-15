@@ -22,7 +22,12 @@ app.get('/', (req, res) => {
       <main>
         <h1>Manage your course goals</h1>
         <section>
-          <form id="goal-form">
+          <form id="goal-form"
+            hx-post="/goals"
+            hx-target="ul"
+            hx-swap="outerHTML"
+            hx-select="ul"
+            >
             <div>
               <label htmlFor="goal">Goal</label>
               <input type="text" id="goal" name="goal" />
@@ -47,5 +52,11 @@ app.get('/', (req, res) => {
   </html>
   `);
 });
+
+app.post("/goals", (req, res) => {
+    const goal = req.body.goal;
+    courseGoals.unshift(goal);
+    res.redirect("/");
+})
 
 app.listen(3000);
