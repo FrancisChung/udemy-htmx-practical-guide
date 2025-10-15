@@ -4,6 +4,7 @@ import { HTMX_KNOWLEDGE } from './data/htmx-info.js';
 
 const app = express();
 
+app.use(express.urlencoded({extended: false}))
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 
         <main>
           <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-          <form>
+          <form hx-post="/note">
             <p>
               <label for="note">Your note</label>
               <input type="text" id="note" name="note">
@@ -46,5 +47,11 @@ app.get('/', (req, res) => {
     </html>
   `);
 });
+
+app.post("/note", (req,res) => {
+    const enteredNote = req.body.note;
+    HTMX_KNOWLEDGE.unshift(enteredNote)
+    res.redirect("/");
+})
 
 app.listen(3000);
