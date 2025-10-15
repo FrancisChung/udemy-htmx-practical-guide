@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send(`
+    res.send(`
     <!DOCTYPE html>
     <html>
       <head>
@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
           
         />
         <link rel="icon" href="/icon.png" />
+        <script src="/htmx.js" defer></script>
         <link rel="stylesheet" href="/main.css" />
-        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js" integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ" crossorigin="anonymous"></script>
       </head>
       <body>
         <header id="main-header">
@@ -29,23 +29,22 @@ app.get('/', (req, res) => {
 
         <main>
           <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-          <button 
-            hx-get="/info"
-            hx-trigger="revealed" 
-            hx-target="main" 
-            hx-swap="beforeend" >Learn More</button>
+          <form>
+            <p>
+              <label for="note">Your note</label>
+              <input type="text" id="note" name="note">
+            </p>
+            <p>
+              <button>Save Note</button>
+            </p>
+          </form>
+          <ul>
+            ${HTMX_KNOWLEDGE.map((info) => `<li>${info}</li>`).join('')}
+          </ul>
         </main>
       </body>
     </html>
   `);
-});
-
-app.get('/info', (req, res) => {
-    res.send(`
-        <ul>
-            ${HTMX_KNOWLEDGE.map(info => `<li>${info}</li>`).join('')}
-        </ul>
-    `)
 });
 
 app.listen(3000);
