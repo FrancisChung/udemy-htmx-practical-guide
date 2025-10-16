@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
             </li>
           `
           )}
-          </ul>
+          </ul> 
         </section>
       </main>
     </body>
@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 
 app.post("/goals", (req, res) => {
     const goal = req.body.goal;
-    courseGoals.unshift(goal);
+    courseGoals.push(goal);
     res.redirect("/");
 })
 
