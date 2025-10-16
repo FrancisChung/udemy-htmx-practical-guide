@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
         <section>
           <form id="goal-form"
             hx-post="/goals"
-            hx-target="ul"
+            hx-target="#goals"
             hx-swap="outerHTML"
             hx-select="#goals"
             >
