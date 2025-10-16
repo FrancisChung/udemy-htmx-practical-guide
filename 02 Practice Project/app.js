@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
               <button>Remove</button>
             </li>
           `
-          )}
+          ).join('')}
           </ul> 
         </section>
       </main>
