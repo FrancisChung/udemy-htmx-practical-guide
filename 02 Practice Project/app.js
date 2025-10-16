@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
             hx-post="/goals"
             hx-target="ul"
             hx-swap="outerHTML"
-            hx-select="ul"
+            hx-select="#goals"
             >
             <div>
               <label htmlFor="goal">Goal</label>
