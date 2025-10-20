@@ -3,6 +3,19 @@ import crypto from 'crypto';
 
 const courseGoals = [];
 
+function renderGoalListItem(id, text) {
+    return `
+            <li id="goal-${id}">
+              <span>${text}</span>
+              <button 
+                hx-delete="/goals/${id}"
+                hx-target="#goal-${id}"
+              >
+                Remove
+              </button>
+            </li>`
+}
+
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -39,15 +52,7 @@ app.get('/', (req, res) => {
           <ul id="goals" hx-swap="outerHTML">
           ${courseGoals.map(
             (goal) => `
-            <li id="goal-${goal.id}">
-              <span>${goal.text}</span>
-              <button 
-                hx-delete="/goals/${goal.id}"
-                hx-target="#goal-${goal.id}"
-              >
-                Remove
-              </button>
-            </li>
+            ${renderGoalListItem(goal.id, goal.text)}
           `
           ).join('')}
           </ul>
@@ -61,18 +66,10 @@ app.get('/', (req, res) => {
 app.post('/goals', (req, res) => {
   const goalText = req.body.goal;
   const id = crypto.randomUUID();
-  const obj = {id: id, text: goalText}
-  courseGoals.push(obj);
+  const goal = {id: id, text: goalText}
+  courseGoals.push(goal);
   res.send(`
-    <li id="goal-${id}">
-      <span>${goalText}</span>
-      <button
-          hx-delete="/goals/${id}"
-          hx-target="#goal-${id}"
-      >
-        Remove
-      </button>
-    </li>
+    ${renderGoalListItem(goal.id, goal.text)}
   `);
 });
 
