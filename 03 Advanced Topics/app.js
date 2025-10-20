@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
             (goal, index) => `
             <li id="goal-${index}">
               <span>${goal}</span>
-              <button>Remove</button>
+              <button hx-delete="/goals/${index}">Remove</button>
             </li>
           `
           ).join('')}
@@ -63,5 +63,10 @@ app.post('/goals', (req, res) => {
     </li>
   `);
 });
+
+app.delete('/goals/:idx', (req, res) => {
+    const index = req.params.idx;
+    courseGoals.splice(index, 1);
+})
 
 app.listen(3000);
