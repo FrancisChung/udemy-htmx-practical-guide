@@ -40,7 +40,13 @@ app.get('/', (req, res) => {
             (goal, index) => `
             <li id="goal-${index}">
               <span>${goal}</span>
-              <button hx-delete="/goals/${index}">Remove</button>
+              <button 
+                hx-delete="/goals/${index}"
+                hx-target="#goal-${index}"
+                hx-swap="outerHTML"
+              >
+                Remove
+              </button>
             </li>
           `
           ).join('')}
@@ -55,11 +61,17 @@ app.get('/', (req, res) => {
 app.post('/goals', (req, res) => {
   const goalText = req.body.goal;
   courseGoals.push(goalText);
-  // res.redirect('/');
+  const index = courseGoals.length - 1;
   res.send(`
-    <li id="goal-${courseGoals.length - 1}">
+    <li id="goal-${index}">
       <span>${goalText}</span>
-      <button>Remove</button>
+      <button
+          hx-delete="/goals/${index}"
+          hx-target="#goal-${index}"
+          hx-swap="outerHTML"
+      >
+        Remove
+      </button>
     </li>
   `);
 });
@@ -67,6 +79,7 @@ app.post('/goals', (req, res) => {
 app.delete('/goals/:idx', (req, res) => {
     const index = req.params.idx;
     courseGoals.splice(index, 1);
+    res.send();
 })
 
 app.listen(3000);
