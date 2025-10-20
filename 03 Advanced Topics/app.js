@@ -1,4 +1,5 @@
 import express from 'express';
+import crypto from 'crypto';
 
 const courseGoals = [];
 
@@ -37,12 +38,12 @@ app.get('/', (req, res) => {
         <section>
           <ul id="goals">
           ${courseGoals.map(
-            (goal, index) => `
-            <li id="goal-${index}">
-              <span>${goal}</span>
+            (goal) => `
+            <li id="goal-${goal.id}">
+              <span>${goal.text}</span>
               <button 
-                hx-delete="/goals/${index}"
-                hx-target="#goal-${index}"
+                hx-delete="/goals/${goal.id}"
+                hx-target="#goal-${goal.id}"
                 hx-swap="outerHTML"
               >
                 Remove
@@ -60,14 +61,15 @@ app.get('/', (req, res) => {
 
 app.post('/goals', (req, res) => {
   const goalText = req.body.goal;
-  courseGoals.push(goalText);
-  const index = courseGoals.length - 1;
+  const id = crypto.randomUUID();
+  const obj = {id: id, text: goalText}
+  courseGoals.push(obj);
   res.send(`
-    <li id="goal-${index}">
+    <li id="goal-${id}">
       <span>${goalText}</span>
       <button
-          hx-delete="/goals/${index}"
-          hx-target="#goal-${index}"
+          hx-delete="/goals/${id}"
+          hx-target="#goal-${id}"
           hx-swap="outerHTML"
       >
         Remove
@@ -76,8 +78,9 @@ app.post('/goals', (req, res) => {
   `);
 });
 
-app.delete('/goals/:idx', (req, res) => {
-    const index = req.params.idx;
+app.delete('/goals/:id', (req, res) => {
+    const id = req.params.id;
+    const index = courseGoals.findIndex(goal => goal.id === id);
     courseGoals.splice(index, 1);
     res.send();
 })
