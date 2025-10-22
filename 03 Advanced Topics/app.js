@@ -73,9 +73,9 @@ app.post('/goals', (req, res) => {
   const id = crypto.randomUUID();
   const goal = {id: id, text: goalText}
   courseGoals.push(goal);
-  res.send(`
+  setTimeout(() => {  res.send(`
     ${renderGoalListItem(goal.id, goal.text)}
-  `);
+  `);},1000)
 });
 
 app.delete('/goals/:id', (req, res) => {
