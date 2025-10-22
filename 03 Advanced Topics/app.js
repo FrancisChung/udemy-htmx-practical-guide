@@ -10,7 +10,6 @@ function renderGoalListItem(id, text) {
               <button 
                 hx-delete="/goals/${id}"
                 hx-target="closest li"
-                hx-confirm="Are you sure you want to delete?"
               >
                 Remove
               </button>
@@ -50,7 +49,11 @@ app.get('/', (req, res) => {
           </form>
         </section>
         <section>
-          <ul id="goals" hx-swap="outerHTML">
+          <ul 
+            id="goals" 
+            hx-swap="outerHTML"
+            hx-confirm="Are you sure you want to delete?"
+          >
           ${courseGoals.map(
             (goal) => `
             ${renderGoalListItem(goal.id, goal.text)}
