@@ -10,6 +10,7 @@ function renderGoalListItem(id, text) {
               <button 
                 hx-delete="/goals/${id}"
                 hx-target="closest li"
+                hx-confirm="Are you sure you want to delete?"
               >
                 Remove
               </button>
