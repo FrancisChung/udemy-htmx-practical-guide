@@ -5,11 +5,11 @@ const courseGoals = [];
 
 function renderGoalListItem(id, text) {
     return `
-            <li id="goal-${id}">
+            <li>
               <span>${text}</span>
               <button 
                 hx-delete="/goals/${id}"
-                hx-target="#goal-${id}"
+                hx-target="closest li"
               >
                 Remove
               </button>
