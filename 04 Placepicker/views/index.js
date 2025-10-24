@@ -24,7 +24,7 @@ export default function renderLocationsPage(availableLocations, interestingLocat
           <section id="int-suggested-locations" class="locations-category">
             <h2>Currently Suggested</h2>
             <ul id="suggested-locations" class="locations">
-              ${suggestedLocations.map((location) => renderLocation(location, false)).join('')}
+              ${suggestedLocations.map((location) => renderLocation(location)).join('')}
             </ul>
           </section>
         
