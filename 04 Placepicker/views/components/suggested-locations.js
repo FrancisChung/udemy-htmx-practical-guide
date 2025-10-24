@@ -1,3 +1,7 @@
+import { AVAILABLE_LOCATIONS } from '../../data/available-locations.js';
+
+const INTERESTING_LOCATIONS = [];
+
 export default function getSuggestedLocations() {
     const availableLocations = AVAILABLE_LOCATIONS.filter(
         (location) => !INTERESTING_LOCATIONS.includes(location)
