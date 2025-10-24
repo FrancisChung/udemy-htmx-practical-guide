@@ -26,7 +26,15 @@ function showConfirmationModal(event) {
         dialog.remove();
     });
 
+    const yesButton = document.getElementById('action-yes');
+    yesButton.addEventListener('click', function() {
+        event.detail.issueRequest(true);
+        console.log("IssueRequest called");
+        dialog.remove();
+        }
+    );
+
     dialog.showModal();
 }
 
-document.addEventListener('htmx:beforeRequest', showConfirmationModal);
+document.addEventListener('htmx:confirm', showConfirmationModal);
