@@ -3,6 +3,7 @@ import express from 'express';
 import { AVAILABLE_LOCATIONS } from './data/available-locations.js';
 import renderLocationsPage from './views/index.js';
 import renderLocation from './views/components/location.js';
+import getSuggestedLocations from './views/components/suggested-locations.js'
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.get('/', (req, res) => {
   const availableLocations = AVAILABLE_LOCATIONS.filter(
     (location) => !INTERESTING_LOCATIONS.includes(location)
   );
-  res.send(renderLocationsPage(availableLocations, INTERESTING_LOCATIONS));
+  const suggestedLocations = getSuggestedLocations();
+  res.send(renderLocationsPage(availableLocations, INTERESTING_LOCATIONS, suggestedLocations));
 });
 
 app.post('/places', (req, res) => {
