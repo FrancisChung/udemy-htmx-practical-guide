@@ -20,6 +20,13 @@ app.get('/', (req, res) => {
   res.send(renderLocationsPage(availableLocations, INTERESTING_LOCATIONS, suggestedLocations));
 });
 
+app.get('/suggested-locations', (req, res) => {
+    const suggestedLocations = getSuggestedLocations();
+    res.send(
+        suggestedLocations.map((location) => renderLocation(location)).join('')
+    );
+});
+
 app.post('/places', (req, res) => {
   const locationId = req.body.locationId;
   const location = AVAILABLE_LOCATIONS.find((loc) => loc.id === locationId);
@@ -29,11 +36,17 @@ app.post('/places', (req, res) => {
       (location) => !INTERESTING_LOCATIONS.includes(location)
   );
 
+  const suggestedLocations = getSuggestedLocations();
+
   res.send(`
     ${renderLocation(location, false)}
     
     <ul id="available-locations" class="locations" hx-swap-oob="true">
       ${availableLocations.map((location) => renderLocation(location)).join('')}
+    </ul>
+    
+    <ul id="suggested-locations" class="locations" hx-swap-oob="innerHTML" >
+      ${suggestedLocations.map((location) => renderLocation(location)).join('')}
     </ul>
   `);
 });
