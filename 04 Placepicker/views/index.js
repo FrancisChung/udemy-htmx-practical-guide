@@ -23,8 +23,11 @@ export default function renderLocationsPage(availableLocations, interestingLocat
         <main>
           <section id="int-suggested-locations" class="locations-category">
             <h2>Currently Suggested</h2>
-            <ul id="suggested-locations" class="locations">
-              ${suggestedLocations.map((location) => renderLocation(location)).join('')}
+            <ul 
+                id="suggested-locations" 
+                class="locations" 
+                hx-get="/suggested-locations">
+                    ${suggestedLocations.map((location) => renderLocation(location)).join('')}
             </ul>
           </section>
         
