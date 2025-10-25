@@ -1,5 +1,8 @@
 Coursework for https://www.udemy.com/course/htmx-the-practical-guide/
 
+<img width="1304" height="430" alt="image" src="https://github.com/user-attachments/assets/e1d68c92-c44e-4842-b0f9-8b4b62770a94" />
+
+
 ### Description
 Are you tired of picking the right JS library from a vast sea of libraries? And do you sometimes feel like frontend JavaScript development & code became unnecessarily complex?
 
@@ -17,27 +20,25 @@ Therefore, in this course, I'll walk you through all core HTMX concepts step-by-
 
 In detail, you'll learn:
 
-<ul>
-What HTMX is & how it works
+- What HTMX is & how it works
+- How to add HTMX to a website
+- How to use HTMX for sending AJAX HTTP requests
+- How to control request data
+- How to control where the response will be rendered
+- How to control which part of the response will be rendered
+- How to handle responses with multiple content elements
+- How to configure requests & responses
+- How to build single-page-applications (SPAs) with HTMX
 
-How to add HTMX to a website
-
-How to use HTMX for sending AJAX HTTP requests
-
-How to control request data
-
-How to control where the response will be rendered
-
-How to control which part of the response will be rendered
-
-How to handle responses with multiple content elements
-
-How to configure requests & responses
-
-How to build single-page-applications (SPAs) with HTMX
-</ul>
 And much, much more!
 
 And you'll learn all that by working on multiple demo projects which allow you to dive deeper and deeper into HTMX.
 
 Therefore, by the end of the course, you'll be able to add HTMX to your next web projects and reap its benefits!
+
+### Notes
+
+1. Official Docs: https://htmx.org/
+   
+
+
