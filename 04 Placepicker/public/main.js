@@ -1,3 +1,5 @@
+console.log("HTMX Object", htmx);
+
 function showConfirmationModal(event) {
     if (event.path.detail === '/suggested-locations') { return }
 
