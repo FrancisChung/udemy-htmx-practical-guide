@@ -25,7 +25,10 @@ app.get('/', (req, res) => {
       </head>
       <body>
         <main>
-          <form hx-post="/login">
+          <form
+          hx-post="/login"
+          hx-target="#extra-information" 
+          >
             <div>
               <img src="/images/auth-icon.jpg" alt="A lock icon" />
             </div>
@@ -52,6 +55,7 @@ app.get('/', (req, res) => {
                 id="password" />
               <p class="error"></p>
             </div>
+            <div id="extra-information"></div>
             <p>
               <button type="submit">
                 Login
@@ -97,13 +101,11 @@ app.post('/login', (req, res) => {
 
   if (Object.keys(errors).length > 0) {
     res.send(`
-      <div id="extra-information">
         <ul id="form-errors">
           ${Object.keys(errors)
             .map((key) => `<li>${errors[key]}</li>`)
             .join('')}
         </ul>
-      </div>
     `);
   }
   res.send();
