@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
                 hx-post="/validate" 
                 hx-target="next p"
                 hx-params="email"
+                hx-headers='{"x-csrf-token": "abcde"}'
                 type="email" 
                 name="email" 
                 id="email" />
