@@ -109,7 +109,7 @@ app.post('/login', (req, res) => {
         </ul>
     `);
   }
-  res.send();
+  res.redirect('/authenticated');
 });
 
 app.get('/authenticated', (req, res) => {
