@@ -109,6 +109,12 @@ app.post('/login', (req, res) => {
         </ul>
     `);
   }
+
+  if (Math.random() > 0.5) {
+      return res.send(`
+        <p class="error">An error has occurred. Please try again</p>
+    `)
+  }
   res.setHeader('HX-Redirect','/authenticated');
   res.send();
 });
