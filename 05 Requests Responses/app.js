@@ -111,6 +111,8 @@ app.post('/login', (req, res) => {
   }
 
   if (Math.random() > 0.5) {
+      res.setHeader('HX-Retarget','.control');
+      res.setHeader('HX-Reswap','beforebegin');
       return res.send(`
         <p class="error">An error has occurred. Please try again</p>
     `)
