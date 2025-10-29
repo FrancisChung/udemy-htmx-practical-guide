@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
       <body>
         <main>
           <form
+          hx-ext="response-targets"
           hx-post="/login"
           hx-target="#extra-information"
           hx-sync="this:replace"
@@ -102,7 +103,7 @@ app.post('/login', (req, res) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    res.send(`
+    return res.status(422).send(`
         <ul id="form-errors">
           ${Object.keys(errors)
             .map((key) => `<li>${errors[key]}</li>`)
