@@ -31,10 +31,13 @@ app.get('/', (req, res) => {
           hx-post="/login"
           hx-target="#extra-information"
           hx-sync="this:replace"
+          hx-target-422="#extra-information"
+          hx-target-500="#server-side-error"
           >
             <div>
               <img src="/images/auth-icon.jpg" alt="A lock icon" />
             </div>
+            <div id="server-side-error"></div>
             <div class="control">
               <label for="email">Email</label>
               <input 
@@ -116,7 +119,7 @@ app.post('/login', (req, res) => {
       // res.setHeader('HX-Retarget','.control');
       // res.setHeader('HX-Reswap','beforebegin');
       return res.status(500).send(`
-        <p class="error">An error has occurred. Please try again</p>
+        <p class="error">A server side error has occurred. Please try again</p>
     `)
   }
   res.setHeader('HX-Redirect','/authenticated');
