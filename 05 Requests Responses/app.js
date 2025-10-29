@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
         />
         <link rel="stylesheet" href="/main.css" />
         <script src="/htmx.js" defer></script>
+        <script src="/htmx-ext-response-targets.js" defer></script>
       </head>
       <body>
         <main>
@@ -111,8 +112,8 @@ app.post('/login', (req, res) => {
   }
 
   if (Math.random() > 0.5) {
-      res.setHeader('HX-Retarget','.control');
-      res.setHeader('HX-Reswap','beforebegin');
+      // res.setHeader('HX-Retarget','.control');
+      // res.setHeader('HX-Reswap','beforebegin');
       return res.send(`
         <p class="error">An error has occurred. Please try again</p>
     `)
